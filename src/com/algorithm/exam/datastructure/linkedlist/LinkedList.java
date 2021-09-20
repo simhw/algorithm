@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure.linkedList;
+package com.algorithm.exam.datastructure.linkedlist;
 
 public class LinkedList<T>{
 
@@ -9,13 +9,13 @@ public class LinkedList<T>{
     private Node<T> node;
 
     private Node<T> searchNode(T data) {
-        if(this.head == null) {
+        if (this.head == null) {
             return null;
         }
-        else{
+        else {
             Node<T> node = this.head;
-            while(node != null){
-                if(node.data == data)
+            while (node != null){
+                if (node.data == data)
                     return node;
                 else
                     node = node.next;
@@ -34,37 +34,36 @@ public class LinkedList<T>{
             while (node.next != null) {
                 node = node.next;
             }
-            Node<T> nextNode = new Node<>(data);
-            node.next = nextNode;
+            node.next = new Node<>(data);
         }
     }
 
-    // 특정 노드 뒤에 데이터를 삽입할 경우
-    public void addNodeInside(T data, T isData){
+    // 임의 노드 뒤에 노드를 추가하는 경우
+    public void addNodeInside(T existedData, T isData){
         // 삽입하려는 노드의 이전 노드
         Node<T> previousNode = this.searchNode(isData);
 
-        if(previousNode == null){
-            addNode(data);
+        if (previousNode == null){
+            addNode(existedData);
         }
-        else{
+        else {
             // 삽입하려는 노드의 다음 노드
             Node<T> nextNode = previousNode.next;
 
 //            Node<T> node = new Node<T>(data);
 //            previousNode.next = node;
 
-            previousNode.next = new Node<>(data);
+            previousNode.next = new Node<>(existedData);
             previousNode.next.next = nextNode;
         }
     }
 
     // 특정 노드를 삭제할 경우
     public boolean deleteNode(T data){
-        if(this.head == null){
+        if (this.head == null){
             return false;
         }
-        else{
+        else {
             Node<T> node = this.head;
             // 삭제할 데이터가 맨 처음 노드일 경우
             if(node.data == data){
