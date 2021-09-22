@@ -59,6 +59,7 @@ public class DoubleLinkedList<T> {
                     node = node.next;
                 }
             }
+            System.out.println("false");
             return false;
         }
     }
