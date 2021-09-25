@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure;
+package com.algorithm.exam.datastructure.hashtable;
 
 // 해쉬 테이블(Hash Table)
 // 키 값의 연산에 의해 직접 접근이 가능한 데이터 구조이다.
@@ -13,19 +13,19 @@ public class HashTable {
     // 슬롯(Slot)
     // 해쉬 테이블에서 한 개의 데이터를 저장할 수 있는 공간이다.
     public class Slot {
-        private String value;
+        String value;
 
         Slot(String value) {
             this.value = value;
         }
     }
 
-
     // 해쉬 함수(Hash function)
     public int hashFunc(String key) {
         // Division 기법
         // 가장 간단한 해쉬 함수 중 하나로, 나누기를 통해, 나머지 값을 사용하는 기법이다.
-        int address = (int)key.charAt(0) % this.hashTable.length;
+        int len = this.hashTable.length;
+        int address = (int)key.charAt(0) % len;
         return address;
 
     }
@@ -42,7 +42,7 @@ public class HashTable {
         return true;
     }
     // key 에 대한 데이터를 가져오는 메서드
-    public String getData(String key){
+    public String getData(String key) {
         String value = this.hashTable[hashFunc(key)].value;
         if (value != null){
             return value;
@@ -52,7 +52,9 @@ public class HashTable {
 
     }
 
-    public static void main(String args[]){
+
+
+    public static void main(String args[]) {
 
         HashTable hashTable = new HashTable(10);
         hashTable.saveData("DaveLee", "010-1111-2222");
