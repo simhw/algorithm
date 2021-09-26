@@ -1,12 +1,13 @@
 package com.algorithm.exam.datastructure.hashtable;
 
-// Open Hashing 기법 중 하나, 해쉬 테이블 저장공간 외의 공간을 활용하는 기법
+// Chaining 기법¶
+// Open Hashing 기법 중 하나, 해쉬 테이블 저장공간 외의 공간을 활용하는 기법이다.
 // 충돌이 일어나면, 링크드 리스트라는 자료 구조를 사용해서, 링크드 리스트로 데이터를 추가로 뒤에 연결시켜서 저장하는 기법이다.
 
 public class OpenHashing {
     Slot[] openHashTable;
 
-    OpenHashing(Integer size){
+    OpenHashing(Integer size) {
         this.openHashTable = new Slot[size];
     }
 
