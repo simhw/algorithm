@@ -25,6 +25,16 @@ public class CloseHashing {
         return (int)key.charAt(0) % this.closeHashTable.length;
     }
 
+//    빈번한 충돌을 개선하는 기법
+//    해쉬 테이블 저장공간을 확대 및 해쉬 함수 재정의
+    public Integer hashFunc2(String key) {
+        Integer address = 0;
+        for (int i = 0; i < key.length(); i++) {
+            address += (int)key.charAt(i) % this.closeHashTable.length;
+        }
+        return address;
+    }
+
     public boolean saveData(String key, String value) {
         Integer address = this.hashFunc(key);
         if (this.closeHashTable[address] != null) {
@@ -43,7 +53,7 @@ public class CloseHashing {
                     }
                     else {
                         nextAddress++;
-                        if (nextAddress >= this.closeHashTable.length)
+                        if (nextAddress > this.closeHashTable.length - 1)
                             return false;
                     }
                 }// end while
