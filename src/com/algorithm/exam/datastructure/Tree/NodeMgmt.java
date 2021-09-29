@@ -1,4 +1,5 @@
 package com.algorithm.exam.datastructure.Tree;
+import com.algorithm.exam.datastructure.Tree.Node;
 // 트리 (Tree) 구조
 // 트리: Node 와 Branch 를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조이다.
 
@@ -8,16 +9,7 @@ package com.algorithm.exam.datastructure.Tree;
 
 public class NodeMgmt {
     Node head = null;
-    public class Node {
-        Node left;
-        Node right;
-        int data;
-        Node(int data) {
-            this.data = data;
-            this.left = null;
-            this.right = null;
-        }
-    }
+
     public boolean insertNode(int data) {
         // CASE1: 노드가 하나도 없을 경우
         if (this.head == null) {
