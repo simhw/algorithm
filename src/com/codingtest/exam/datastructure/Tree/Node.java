@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure.Tree;
+package com.codingtest.exam.datastructure.Tree;
 
 public class Node {
     Node left;

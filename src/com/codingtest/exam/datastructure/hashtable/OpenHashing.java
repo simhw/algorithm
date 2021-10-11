@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure.hashtable;
+package com.codingtest.exam.datastructure.hashtable;
 
 // Chaining 기법¶
 // Open Hashing 기법 중 하나, 해쉬 테이블 저장공간 외의 공간을 활용하는 기법이다.

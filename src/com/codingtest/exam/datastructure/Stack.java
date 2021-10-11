@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure;
+package com.codingtest.exam.datastructure;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure.linkedlist;
+package com.codingtest.exam.datastructure.linkedlist;
 
 public class LinkedList<T>{
 

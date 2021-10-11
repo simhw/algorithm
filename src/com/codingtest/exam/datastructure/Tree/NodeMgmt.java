@@ -1,5 +1,4 @@
-package com.algorithm.exam.datastructure.Tree;
-import com.algorithm.exam.datastructure.Tree.Node;
+package com.codingtest.exam.datastructure.Tree;
 // 트리 (Tree) 구조
 // 트리: Node 와 Branch 를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조이다.
 

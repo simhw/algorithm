@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure.linkedlist;
+package com.codingtest.exam.datastructure.linkedlist;
 // 미리 데이터 공간을 할당하지 않아도 된다.
 // 그러나 연결을 위한 별도의 데이터 공간(다음 노드의 주소 공간)이 필요하다.
 

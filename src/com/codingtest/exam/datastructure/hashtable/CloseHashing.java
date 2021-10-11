@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure.hashtable;
+package com.codingtest.exam.datastructure.hashtable;
 
 // Linear Probing 기법
 // Close Hashing 기법 중 하나, 해쉬 테이블 저장공간 안에서 충돌 문제를 해결하는 기법이다.

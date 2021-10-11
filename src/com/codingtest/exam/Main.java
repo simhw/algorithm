@@ -1,4 +1,4 @@
-package com.algorithm.exam;
+package com.codingtest.exam;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure.doublelinkedlist;
+package com.codingtest.exam.datastructure.doublelinkedlist;
 
 public class DoubleLinkedList<T> {
     public Node<T> head = null;

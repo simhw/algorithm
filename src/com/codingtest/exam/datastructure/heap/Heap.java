@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure.heap;
+package com.codingtest.exam.datastructure.heap;
 // 힙: 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 완전 이진 트리(Complete Binary Tree)
 //
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure.doublelinkedlist;
+package com.codingtest.exam.datastructure.doublelinkedlist;
 
 public class Node<T> {
     // 더블 링크드 리스트

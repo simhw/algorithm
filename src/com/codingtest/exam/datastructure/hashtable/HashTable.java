@@ -1,4 +1,4 @@
-package com.algorithm.exam.datastructure.hashtable;
+package com.codingtest.exam.datastructure.hashtable;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package com.algorithm.exam.algorithm.sort;
+package com.codingtest.exam.algorithm.sort;
 
 import java.util.ArrayList;
 import java.util.Collections;
