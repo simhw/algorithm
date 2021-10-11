@@ -126,6 +126,8 @@ public class Heap {
 
         heapTest.popNode();
         System.out.println(heapTest.heapArray);
+        heapTest.popNode();
+        System.out.println(heapTest.heapArray);
 
     }
 }
