@@ -27,15 +27,14 @@ public class BubbleSort {
         }
     }
     public static void main(String[] args) {
-         BubbleSort bubbleSort = new BubbleSort();
-        ArrayList<Integer> dataList = new ArrayList<Integer>();
-        for (int i = 0; i < 10; i++) {
-            dataList.add((int)(Math.random() * 100));
-        }
-        System.out.print(dataList);
-        System.out.println();
-        bubbleSort(dataList);
-        System.out.print(dataList);
 
+         ArrayList<Integer> dataList = new ArrayList<Integer>();
+         for (int i = 0; i < 10; i++) {
+             dataList.add((int)(Math.random() * 100));
+         }
+         System.out.print(dataList);
+         System.out.println();
+         bubbleSort(dataList);
+         System.out.print(dataList);
     }
 }
