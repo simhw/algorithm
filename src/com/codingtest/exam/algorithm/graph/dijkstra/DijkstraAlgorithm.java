@@ -1,27 +1,10 @@
-package com.codingtest.exam.algorithm.graph;
+package com.codingtest.exam.algorithm.graph.dijkstra;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
-class Edge implements Comparable<Edge>{
-    String vertex;
-    Integer distance;
-
-    public Edge(String vertex, Integer distance) {
-        this.vertex = vertex;
-        this.distance = distance;
-    }
-    public String toString() {
-        return "vertex: " + this.vertex + " distance: " + this.distance;
-    }
-
-    @Override
-    public int compareTo(Edge edge) {
-        return this.distance - edge.distance;
-    }
-}
 // 최단 경로를 구하는 알고리즘 중 하나이다.
 public class DijkstraAlgorithm {
     public static HashMap<String, Integer> dijkstra(HashMap<String, ArrayList<Edge>> graph, String start) {
