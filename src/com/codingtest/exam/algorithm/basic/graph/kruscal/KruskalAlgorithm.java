@@ -1,4 +1,4 @@
-package com.codingtest.exam.algorithm.graph.kruscal;
+package com.codingtest.exam.algorithm.basic.graph.kruscal;
 
 import java.util.*;
 

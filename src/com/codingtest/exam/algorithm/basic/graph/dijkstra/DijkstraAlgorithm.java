@@ -1,4 +1,4 @@
-package com.codingtest.exam.algorithm.graph.dijkstra;
+package com.codingtest.exam.algorithm.basic.graph.dijkstra;
 
 import java.util.ArrayList;
 import java.util.Arrays;

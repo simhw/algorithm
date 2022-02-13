@@ -1,4 +1,4 @@
-package com.codingtest.exam.algorithm.graph.improvedprim;
+package com.codingtest.exam.algorithm.basic.graph.improvedprim;
 
 public class Path {
     public String node1;

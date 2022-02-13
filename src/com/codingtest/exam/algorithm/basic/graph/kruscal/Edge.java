@@ -1,20 +1,19 @@
-package com.codingtest.exam.algorithm.graph.prim;
-
+package com.codingtest.exam.algorithm.basic.graph.kruscal;
 
 public class Edge implements Comparable<Edge> {
     String nodeV;
-    String nodeO;
+    String nodeU;
     Integer weight;
 
-    public Edge(String nodeV, String nodeO, Integer weight) {
+    public Edge(String nodeV, String nodeU, Integer weight) {
         this.nodeV = nodeV;
-        this.nodeO = nodeO;
+        this.nodeU = nodeU;
         this.weight = weight;
     }
 
     @Override
     public String toString() {
-        return "(" + nodeV + ", " + nodeO + ": " + weight + ")";
+        return "(" + nodeV + ", " +  nodeU + ": " + weight + ")";
     }
 
     @Override

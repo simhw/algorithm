@@ -1,4 +1,4 @@
-package com.codingtest.exam.algorithm.backtracking;
+package com.codingtest.exam.algorithm.basic.backtracking;
 
 import java.util.ArrayList;
 

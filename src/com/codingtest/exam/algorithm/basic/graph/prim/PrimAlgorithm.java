@@ -1,6 +1,4 @@
-package com.codingtest.exam.algorithm.graph.prim;
-
-import com.codingtest.exam.datastructure.doublelinkedlist.Node;
+package com.codingtest.exam.algorithm.basic.graph.prim;
 
 import java.util.ArrayList;
 import java.util.HashMap;

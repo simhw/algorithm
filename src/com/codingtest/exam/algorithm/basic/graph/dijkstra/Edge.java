@@ -1,4 +1,4 @@
-package com.codingtest.exam.algorithm.graph.dijkstra;
+package com.codingtest.exam.algorithm.basic.graph.dijkstra;
 
 
 public class Edge implements Comparable<Edge> {

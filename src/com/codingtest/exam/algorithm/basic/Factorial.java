@@ -1,4 +1,4 @@
-package com.codingtest.exam.algorithm;
+package com.codingtest.exam.algorithm.basic;
 
 import java.util.ArrayList;
 
