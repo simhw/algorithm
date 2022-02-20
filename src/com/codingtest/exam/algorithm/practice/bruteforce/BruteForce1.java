@@ -20,14 +20,15 @@ public class BruteForce1 {
     // 아직 M 개를 고르지 않은 경우 k 번째부터 M 번째 원소를 조건에 맞게 고르는 모든 방법을 시도한다.
     static void recFunc(int k) {
         if (k == M + 1) {
-//             selected[1...M] 배열이 새롭게 탐색된 결과를 출력해준다.
+//          selected[1...M] 배열이 새롭게 탐색된 결과를 출력해준다.
             for (int i = 1; i <= M; i++) {
                 sb.append(selected[i]).append(' ');
-            }sb.append('\n' );
+            }
+            sb.append('\n' );
         }
         else {
-            for (int i = 1; i <= N; i++) {
-                selected[k] = i;
+            for (int candidate = 1; candidate <= N; candidate++) {
+                selected[k] = candidate;
                 // k + 1 번부터 M 번까지 채워주는 함수를 호출해준다.
                 recFunc(k + 1);
                 selected[k] = 0;
