@@ -3,7 +3,7 @@ package com.codingtest.exam.algorithm.practice.bruteforce;
 import java.io.*;
 import java.util.*;
 
-public class BruteForce {
+public class BruteForce1 {
     static StringBuilder sb = new StringBuilder();
 
     static void input() {
