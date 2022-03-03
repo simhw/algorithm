@@ -20,11 +20,12 @@ public class BruteForce1 {
     // 아직 M 개를 고르지 않은 경우 k 번째부터 M 번째 원소를 조건에 맞게 고르는 모든 방법을 시도한다.
     static void recFunc(int k) {
         if (k == M + 1) {
-//          selected[1...M] 배열이 새롭게 탐색된 결과를 출력해준다.
             for (int i = 1; i <= M; i++) {
                 sb.append(selected[i]).append(' ');
+                System.out.println(selected[i] + " ");
             }
             sb.append('\n' );
+            System.out.println();
         }
         else {
             for (int candidate = 1; candidate <= N; candidate++) {
@@ -41,51 +42,5 @@ public class BruteForce1 {
         // 1 번째 원소부터 M 번째 원소 중 조건에 맞는 모든 방법을 찾는다.
         recFunc(1);
         System.out.println(sb.toString());
-    }
-
-    static class FastReader {
-        BufferedReader br;
-        StringTokenizer st;
-
-        public FastReader() {
-            br = new BufferedReader(new InputStreamReader(System.in));
-        }
-
-        public FastReader(String s) throws FileNotFoundException {
-            br = new BufferedReader(new FileReader(new File(s)));
-        }
-
-        String next() {
-            while (st == null || !st.hasMoreElements()) {
-                try {
-                    st = new StringTokenizer(br.readLine());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return st.nextToken();
-        }
-
-        int nextInt() {
-            return Integer.parseInt(next());
-        }
-
-        long nextLong() {
-            return Long.parseLong(next());
-        }
-
-        double nextDouble() {
-            return Double.parseDouble(next());
-        }
-
-        String nextLine() {
-            String str = "";
-            try {
-                str = br.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return str;
-        }
     }
 }
