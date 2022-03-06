@@ -13,6 +13,7 @@ public class BruteForce2 {
         N = scan.nextInt();
         M = scan.nextInt();
         selected = new int[M + 1];
+        used = new int[N + 1];
     }
 
     static int N, M;
@@ -50,12 +51,11 @@ public class BruteForce2 {
 //                    selected[k] = 0;
 //                }
 
-                selected[k] = candidate;
-                used[candidate] = 1;
+                selected[k] = candidate; used[candidate] = 1;
+
                 recFunc(k + 1);
 
-                selected[k] = 0;
-                used[candidate] = 0;
+                selected[k] = 0; used[candidate] = 0;
             }
         }
     }
