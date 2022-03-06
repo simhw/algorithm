@@ -30,8 +30,8 @@ public class BruteForce2 {
         }
         else {
             for (int candidate = 1; candidate <= N; candidate++) {
-
                 // (1) 중복을 체크해주는 알고리즘
+                // 중복 값 체크
 //                boolean isUsed = false;
 //                for (int i = 0; i < k; i++) {
 //                    if (candidate == selected[i]) {
@@ -40,6 +40,7 @@ public class BruteForce2 {
 //                }
 
                 // (2) 중복을 체크해주는 알고리즘
+                // 중복 값 배열 체크
                 if (used[candidate] == 1) continue;
 
 //                if (!isUsed) {
@@ -51,8 +52,8 @@ public class BruteForce2 {
 
                 selected[k] = candidate;
                 used[candidate] = 1;
-
                 recFunc(k + 1);
+
                 selected[k] = 0;
                 used[candidate] = 0;
             }
