@@ -1,10 +1,5 @@
 package com.codingtest.exam.programmers;
-
-import sun.rmi.server.InactiveGroupException;
-
-import javax.swing.text.html.parser.Parser;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Comparator;
 
 class MoneyExchange {
