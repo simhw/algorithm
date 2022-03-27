@@ -1,4 +1,4 @@
-package com.codingtest.exam.programmers;
+package com.codingtest.exam.programmers.level1;
 
 public class RecommendNewId {
     public String solution(String new_id) {
