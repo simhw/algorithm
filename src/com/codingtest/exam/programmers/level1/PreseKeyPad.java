@@ -1,38 +1,79 @@
 package com.codingtest.exam.programmers.level1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.HashMap;
 
 public class PreseKeyPad {
     public String solution(int[] numbers, String hand) {
         String answer = "";
-        String left = "*", right = "#";
-        String[][] keypad = new String[][]{
-                {"1", "2", "3"},
-                {"4", "5", "6"},
-                {"7", "8", "9"},
-                {"*", "0", "#"}
-        };
+        //  키패드 
+        HashMap <String, ArrayList<Integer>> hashMap = new HashMap<>();
+        hashMap.put("1", new ArrayList<Integer>(Arrays.asList(0, 0)));
+        hashMap.put("2", new ArrayList<Integer>(Arrays.asList(0, 1)));
+        hashMap.put("3", new ArrayList<Integer>(Arrays.asList(0, 2)));
+        hashMap.put("4", new ArrayList<Integer>(Arrays.asList(1, 0)));
+        hashMap.put("5", new ArrayList<Integer>(Arrays.asList(1, 1)));
+        hashMap.put("6", new ArrayList<Integer>(Arrays.asList(1, 2)));
+        hashMap.put("7", new ArrayList<Integer>(Arrays.asList(2, 0)));
+        hashMap.put("8", new ArrayList<Integer>(Arrays.asList(2, 1)));
+        hashMap.put("9", new ArrayList<Integer>(Arrays.asList(2, 2)));
+        hashMap.put("*", new ArrayList<Integer>(Arrays.asList(3, 0)));
+        hashMap.put("0", new ArrayList<Integer>(Arrays.asList(3, 1)));
+        hashMap.put("#", new ArrayList<Integer>(Arrays.asList(3, 2)));
+        
+        ArrayList<Integer> nPos = new ArrayList<>();
+        ArrayList<Integer> rPos = new ArrayList<>();
+        ArrayList<Integer> lPos = new ArrayList<>();
 
-        int[] numIdx = new int[2], rightIdx = new int[2], leftIdx = new int[2];
+        String left = "*"; 
+        String right = "#";
 
-        // 눌러야 할 숫자
-        for (int num:numbers) {
-            for (int i = 0; i < keypad.length; i++) {
-                for (int j = 0; j < keypad[i].length; j++) {
-                    if (keypad[i][j] == num+"") {
-                        numIdx[0] = i;
-                        numIdx[1] = j;
-                    } else if (keypad[i][j] == left) {
-                        leftIdx[0] = i;
-                        leftIdx[1] = j;
-                    } else if (keypad[i][j] == right) {
-                        rightIdx[0] = i;
-                        rightIdx[1] = j;
+        for (int number : numbers) {
+            String num = Integer.toString(number);
+            // 2. 왼손 사용  
+            if (num.equals("1") || num.equals("4") || num.equals("7") || num.equals("*")) {
+                left = num;                
+                answer += "L";
+                continue;
+            }
+            // 3. 오른손 사용 
+            else if (num.equals("3") || num.equals("6") || num.equals("9") || num.equals("#")) {
+                right = num;
+                answer += "R";
+                continue;
+            }
+            // 4. 두 엄지손가락의 현재 키패드의 위치에서 더 가까운 엄지손가락을 사용
+            else {
+                int leftDis, rightDis;
+
+                nPos = hashMap.get(num);
+                lPos = hashMap.get(left);
+                rPos = hashMap.get(right);
+
+                leftDis = Math.abs(nPos.get(0) - lPos.get(0)) + Math.abs(nPos.get(1) - lPos.get(1));
+                rightDis = Math.abs(nPos.get(0) - rPos.get(0)) + Math.abs(nPos.get(1) - rPos.get(1));
+
+                if(leftDis > rightDis) {
+                    right = num;
+                    answer += "R";
+                } else if (leftDis < rightDis) {
+                    left = num;
+                    answer += "L";
+                } 
+                // 4.1 만약 두 엄지손가락의 거리가 같다면, 오른손잡이는 오른손 엄지손가락, 왼손잡이는 왼손 엄지손가락을 사용
+                else if (leftDis == rightDis) {
+                    if (hand.equals("right")) {
+                        right = num;
+                        answer += "R";
+                    } else if (hand.equals("left")){
+                        left = num;
+                        answer += "L";
                     }
                 }
             }
         }
+        System.out.println(answer);
         return answer;
     }
 
