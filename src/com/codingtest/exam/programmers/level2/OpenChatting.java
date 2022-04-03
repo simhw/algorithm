@@ -1,55 +1,48 @@
 package com.codingtest.exam.programmers.level2;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * OpenChatting
  */
+
+
 public class OpenChatting {
-
-    static class User {
-        String id;
-        String nickName;
-
-        User(String id, String nickName) {
-            this.id = id;
-            this.nickName = nickName;
-        }
-    }
-
     public String[] solution(String[] record) {
-        String[] answer = {};
-
-        // 0. 사람 정보 초기화
-        ArrayList<User> users = new ArrayList<>();
-
+        HashMap<String, String > members = new HashMap<>();
+        ArrayList<String> output = new ArrayList<>();
         String[] str = new String[3];
+        // 0. 사람 정보 초기화
         for (int i = 0; i < record.length; i++) {
-
             str = record[i].split(" ");
-            String action = str[0];
-            switch (action) {
-                case "Enter": {
-                    users.add(new User(str[1], str[2]));
-                    System.out.println(str[2] + "님이 들어왔습니다.");
+            String event = str[0];
+            switch (event) {
+                case "Enter":
+                case "Change":
+                    members.put(str[1], str[2]);
                     break;
-                }
-                   
-                case "Change": {
+                case "Leave":
+                    members.remove(str[1]);
                     break;
-                }
-                   
-                case "Leave": {
-                    break;   
-                }
                 default:
                     break;
             }
         }
-        System.out.println(users.toString());
+        // 1. 출력
+        String nickName;
+        for (int i = 0; i < record.length; i++) {
+            str = record[i].split(" ");
+            nickName = members.get(str[1]);
+            if (str[0].equals("Enter")) {
+                output.add(nickName + "님이 들어왔습니다.");
+            } else if (str[0].equals("Leave")) {
+                output.add(nickName + "님이 나갔습니다.");
+            } else continue;
+        }
 
-        return answer;
+        String[] answer = new String[output.size()];
+        return output.toArray(answer);
     }
 
     public static void main(String[] args) {
