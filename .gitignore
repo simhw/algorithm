@@ -1,2 +1,4 @@
 # Project exclude paths
 /out/
+/src/com/codingtest/exam/algorithm/
+/src/com/codingtest/exam/datastructure/
