@@ -19,7 +19,9 @@ public class RenewalMenu {
                 selected = new String[M + 1];
                 recFunc(1);
             }
+
             if (hashMap.size() == 0) continue;                
+            
             int max = Collections.max(hashMap.values());
             for (String key : hashMap.keySet()) {
                 if (max > 1 && max == hashMap.get(key)) {
@@ -32,7 +34,7 @@ public class RenewalMenu {
 
         String[] answer = new String[arrayList.size()];
         arrayList.toArray(answer);
-      
+        System.out.println(arrayList.toString());
         return answer;        
     }
 
@@ -43,11 +45,8 @@ public class RenewalMenu {
             for (int i = 1; i < M + 1; i++) {
                 str += selected[i];
             }
-            if (hashMap.get(str) == null) {
-                hashMap.put(str, 1);
-            } else {
-                hashMap.put(str, hashMap.get(str) + 1);
-            }
+            // 키 값이 존재하면 키 값을 반환하고, 없으면 0을 반환한다. 
+            hashMap.put(str, hashMap.getOrDefault(str, 0) + 1);
         } else {
             // 아직 M 개를 고르지 않은 경우 k 번째부터 M 번째 원소를 조건에 맞게 고르는 모든 방법을 시도한다.
             int start = order.indexOf(selected[k - 1]) + 1;
