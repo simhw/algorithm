@@ -25,32 +25,30 @@ public class NewsClustering {
             }
         }
 
-        System.out.println(list1);
-        System.out.println(list2);
-
         // 2. 자카드 유사도 
         // 두 집합의 교집합 크기를 두 집합의 합집합 크기로 나눈 값으로 정의된다.
 
         if (list1.size() == 0 && list2.size() == 0) {
             return 65536;
         } else {
-            int intersection = 0, union = 0;
+            ArrayList<String> union = new ArrayList<>();
+            int intersection = 0;
+            union.addAll(list1); union.addAll(list2);
+
             for (String str : list1) {
                 if (list2.indexOf(str) != -1) {
+                    list2.remove(str);
                     intersection++;
                 }
-            }
-            
-            list1.addAll(list2);
-            union = list1.size() - intersection;
-            double similarity = (double)intersection / (double)union;
-            return  (int)similarity * 65536;
+            }            
+            double similarity = intersection * 1.0 / (union.size() - intersection) * 1.0;
+            return (int)(similarity * 65536);
         }
     }
 
     public static void main(String[] args) {
         NewsClustering newsClustering = new NewsClustering();
-        newsClustering.solution("E=M*C^2", "e=m*c^2");
+        newsClustering.solution("aa1+aa2", "AAAA12");
     }
 }
 
