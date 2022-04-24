@@ -1,5 +1,7 @@
 package com.codingtest.exam.programmers.level2;
 
+import sun.rmi.runtime.Log;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -36,7 +38,7 @@ public class MaximizeMath {
             for (int i = 0; i < selected.length; i++) {
                 idx = optlist.indexOf(selected[i]);
                 while (idx != -1) {
-                    answer = calculate(Integer.parseInt(numlist.get(idx)), Integer.parseInt(numlist.get(idx + 1)), selected[i]);
+                    answer = calculate(Long.parseLong(numlist.get(idx)), Long.parseLong(numlist.get(idx + 1)), selected[i]);
                     // System.out.println(numlist.get(idx) + selected[i] + numlist.get(idx + 1) + "=" + answer);
                     numlist.set(idx, answer + "");
                     numlist.remove(idx + 1);
@@ -60,7 +62,7 @@ public class MaximizeMath {
         }
     }
 
-    public long calculate(int a, int b, String opt) {
+    public long calculate(long a, long b, String opt) {
         if (opt.equals("+")) {
             return a + b;
         } else if (opt.equals("-"))  {
