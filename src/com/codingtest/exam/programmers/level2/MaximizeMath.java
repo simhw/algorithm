@@ -1,7 +1,5 @@
 package com.codingtest.exam.programmers.level2;
 
-import sun.rmi.runtime.Log;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
