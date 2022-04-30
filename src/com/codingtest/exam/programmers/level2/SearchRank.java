@@ -1,21 +1,40 @@
 package com.codingtest.exam.programmers.level2;
 
+import com.sun.org.apache.xalan.internal.xsltc.trax.XSLTCSource;
+
+import java.util.Arrays;
+
 public class SearchRank {
     public int[] solution(String[] info, String[] query) {
-        // 0. cpp, java, python
-        // 1. backend, frontend
-        // 2. junior, senior
-        // 3. chicken, pizza 
-        String[][] arr = new String[info.length][4];
 
-        for (int i = 0; i < info.length; i++) {
-            for (String str : info[i].split(" ")) {
-                System.out.println(str);
+        int[] answer = new int[query.length];
+        String[] queryArr = new String[4];
+        String[] infoArr = new String[4];
+        int score = 0;
+
+        for (int i = 0; i < query.length; i++) {
+            queryArr = query[i].replaceAll(" and", "").split(" ");
+            score = Integer.parseInt(queryArr[4]);
+            for (int j = 0; j < info.length; j++) {
+                infoArr = info[j].split(" ");
+                if (score > Integer.parseInt(infoArr[4])) {
+                    continue;
+                } else {
+                    int k = 0;
+                    // info 원소 비교
+                    while (k < infoArr.length - 1) {
+                        if (infoArr[k].equals(queryArr[k]) || queryArr[k].equals("-")) {
+                            k++;
+                            if (k == infoArr.length - 1) {
+                                answer[i] += 1;
+                            }
+                        }
+                        else break;
+                    }
+                }
             }
         }
-
-
-        int[] answer = {};
+        System.out.println(Arrays.toString(answer));
         return answer;
     }
 
