@@ -4,10 +4,7 @@ import java.util.*;
 
 public class SearchRank {
 
-    static String[] visited = new String[4];
-    static String[] infos;
-    static int score = 0;
-    static Map<String, ArrayList<Integer>> group = new HashMap<>();
+    static Map<String, List<Integer>> group = new HashMap<>();
 
     public int[] solution(String[] info, String[] query) {
 
@@ -15,9 +12,12 @@ public class SearchRank {
 
         // 1. 모든 지원자들을 분류한 후 같은 그룹의 지원자끼리 묶어둔다.
         for (int i = 0; i < info.length; i++) {
-            infos = info[i].split(" ");
-            score = Integer.parseInt(infos[4]);
-            grouping(0);
+            // 1)
+            // dfs(0, "", info[i].split(" "));
+
+            // 2)
+            String[] infos = info[i].split(" ");
+            grouping(0, new String[4], infos, Integer.parseInt(infos[4]));
         }
 
         // 2. 해당 그룹에서 점수를 기준으로 오름차순 정렬한다.
@@ -36,37 +36,49 @@ public class SearchRank {
         return answer;
     }
 
-    public void grouping(int k) {
+    // 1) 
+    public void grouping(int k, String[] visited, String[] infos, int score) {
         if (k == 4) {
             String key = String.join("", visited);
-            ArrayList<Integer> values = group.getOrDefault(key, new ArrayList<>());
+            List<Integer> values = group.getOrDefault(key, new ArrayList<Integer>());
             values.add(score);
             group.put(key, values);
         } else {
             visited[k] = infos[k];
-            grouping(k + 1);
+            grouping(k + 1, visited, infos, score);
             visited[k] = "-";
-            grouping(k + 1);
+            grouping(k + 1, visited, infos, score);
+        }
+    }
+    // 2) 
+    public void dfs(int k, String key, String[] info) {
+        if (k == 4) {
+            List<Integer> list = group.getOrDefault(key, new ArrayList<>());
+            list.add(Integer.parseInt(info[4]));
+            group.put(key, list);
+        } else {
+            dfs(k + 1, key + "-", info);
+            dfs(k + 1, key + info[k], info);
         }
     }
 
-    public int lowerbound(ArrayList<Integer> list, int target) {
+    public int lowerbound(List<Integer> list, int target) {
         int left = 0;
         int right = list.size() - 1;
                 
         int mid = 0;        
 
-        while (right > left) {
+        while (right >= left) {
             mid = (left + right) / 2;
             if (list.get(mid) >= target) {
-                right = mid;
+                right = mid - 1;
             } else {
                 left = mid + 1;
             }
         }
-        return list.size() - right;
+        return list.size() - left;
     }
-
+	
     public static void main(String[] args) {
         SearchRank searchRank = new SearchRank();
         String[] info = new String[] {
