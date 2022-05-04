@@ -1,10 +1,26 @@
 package com.codingtest.exam.programmers.level2;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class SearchPrimeNumber {
     public int solution(int n, int k) {
         int answer = -1;
+        List<Integer> num = new ArrayList<>();
+        int q = n;  // 몫
+        int r = 0;  // 나머지 
+
+        //1. k 진수로 변환 
+        while(q > 0) {            
+            System.out.println(Math.ceil(q % k));
+            r = (int)Math.ceil(q % k);
+            q /= k;
+            // System.out.println("q = " + q + " r = " + r);
+            num.add(r);
+        }
+
+        System.out.println(num.toString());
         return answer;
     }
 
@@ -42,7 +58,6 @@ public class SearchPrimeNumber {
 
     public static void main(String[] args) {
         SearchPrimeNumber searchPrimeNumber = new SearchPrimeNumber();
-        // searchPrimeNumber.solution(437674, 3);
-        searchPrimeNumber.primNumberSieve(25);
+        searchPrimeNumber.solution(145891, 3);
     }
 }
