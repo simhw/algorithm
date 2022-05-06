@@ -38,7 +38,7 @@ public class SearchPrimeNumber {
 
         for (int i = 0; i < list.size(); i++) {
             if(list.get(i).length() > 0) {
-                if(isPrimeNumber(Integer.parseInt(list.get(i)))) {
+                if(isPrimeNumber(Long.parseLong(list.get(i)))) {
                     answer += 1;
                 }
             }
@@ -47,7 +47,7 @@ public class SearchPrimeNumber {
         return answer;
     }
 
-    public boolean isPrimeNumber(int x) {
+    public boolean isPrimeNumber(Long x) {
         if (x == 1) return false;
         int end = (int) Math.sqrt(x);
         for (int i = 2; i <= end; i++) {
