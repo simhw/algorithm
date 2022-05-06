@@ -6,27 +6,50 @@ import java.util.List;
 
 public class SearchPrimeNumber {
     public int solution(int n, int k) {
-        int answer = -1;
-        List<Integer> num = new ArrayList<>();
-        int q = n;  // 몫
+        int answer = 0;
+        StringBuffer str = new StringBuffer();
         int r = 0;  // 나머지 
 
         //1. k 진수로 변환 
-        while(q > 0) {            
-            System.out.println(Math.ceil(q % k));
-            r = (int)Math.ceil(q % k);
-            q /= k;
-            // System.out.println("q = " + q + " r = " + r);
-            num.add(r);
+        while(n > 0) {            
+            r = (int) n % k;
+            n /= k;
+            str.append(r + "");
+        }
+        str.reverse();
+        System.out.println(str);
+
+        // 2. 소수 개수
+        String num = "";
+        List<String> list = new ArrayList<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '0'){
+                list.add(num.toString());
+                num = "";
+            } else{
+                num += str.charAt(i);
+            }
+
+            if (i == str.length() - 1) {
+                list.add(num.toString());
+            }
         }
 
-        System.out.println(num.toString());
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i).length() > 0) {
+                if(isPrimeNumber(Integer.parseInt(list.get(i)))) {
+                    answer += 1;
+                }
+            }
+        }
+        System.out.println(answer);
         return answer;
     }
 
     public boolean isPrimeNumber(int x) {
+        if (x == 1) return false;
         int end = (int) Math.sqrt(x);
-        System.out.println("end = " + end);
         for (int i = 2; i <= end; i++) {
             if (x % i == 0) {
                 return false;
@@ -58,6 +81,6 @@ public class SearchPrimeNumber {
 
     public static void main(String[] args) {
         SearchPrimeNumber searchPrimeNumber = new SearchPrimeNumber();
-        searchPrimeNumber.solution(145891, 3);
+        searchPrimeNumber.solution(437674, 3);
     }
 }
