@@ -1,8 +1,6 @@
 package com.codingtest.exam.programmers.level2;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class SearchPrimeNumber {
     public int solution(int n, int k) {
@@ -10,35 +8,23 @@ public class SearchPrimeNumber {
         StringBuffer str = new StringBuffer();
         int r = 0;  // 나머지 
 
-        //1. k 진수로 변환 
+        // 1. k 진수로 변환 
         while(n > 0) {            
             r = (int) n % k;
             n /= k;
             str.append(r + "");
         }
         str.reverse();
-        System.out.println(str);
 
-        // 2. 소수 개수
-        String num = "";
-        List<String> list = new ArrayList<>();
-
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '0'){
-                list.add(num.toString());
-                num = "";
-            } else{
-                num += str.charAt(i);
-            }
-
-            if (i == str.length() - 1) {
-                list.add(num.toString());
-            }
-        }
-
-        for (int i = 0; i < list.size(); i++) {
-            if(list.get(i).length() > 0) {
-                if(isPrimeNumber(Long.parseLong(list.get(i)))) {
+        // 1. k 진수로 변환 
+        // String[] arr = Integer.toString(n, k).split("0");
+        
+        // 2. 소수 개수 구하기 
+        String[] arr = str.toString().split("0");
+    
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i].length() > 0) {
+                if(isPrimeNumber(Long.parseLong(arr[i]))) {
                     answer += 1;
                 }
             }
