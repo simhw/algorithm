@@ -1,8 +1,8 @@
 package com.codingtest.exam.algorithm.practice.bruteforce;
 
-import java.io.*;
-import java.util.StringTokenizer;
+import com.codingtest.exam.algorithm.practice.FastReader;
 
+// 순열 
 // N 개 중 중복없이, M 개를 순서있게 나열하는 알고리즘
 
 public class BruteForce2 {

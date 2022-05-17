@@ -1,9 +1,9 @@
 package com.codingtest.exam.algorithm.practice.bruteforce;
 
-// N 개 중 중복을 허용하여, M 개를 선택하는 알고리즘
+import com.codingtest.exam.algorithm.practice.FastReader;
 
-import java.io.*;
-import java.util.StringTokenizer;
+// 중복 조합 
+// N 개 중 중복을 허용하여, M 개를 선택하는 알고리즘
 
 public class BruteForce3 {
     static StringBuilder sb = new StringBuilder();

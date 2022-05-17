@@ -1,7 +1,8 @@
 package com.codingtest.exam.algorithm.practice.bruteforce;
 
-import java.io.*;
-import java.util.*;
+import com.codingtest.exam.algorithm.practice.FastReader;
+// 중복 순열 
+// N 개 중 중복을 허용하여, M 개를 순서있게 나열하는 알고리즘
 
 public class BruteForce1 {
     static StringBuilder sb = new StringBuilder();

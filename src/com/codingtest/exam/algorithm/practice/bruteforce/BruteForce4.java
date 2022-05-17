@@ -1,7 +1,10 @@
 package com.codingtest.exam.algorithm.practice.bruteforce;
 
+import com.codingtest.exam.algorithm.practice.FastReader;
+
 // 조합
-// ㅊ
+// N 개 중, M 개를 선택하는 알고리즘
+
 public class BruteForce4 {
     static StringBuilder sb = new StringBuilder();
     static int N, M;
