@@ -9,17 +9,22 @@ public class NNumberGame {
         String answer = "";
 
         // 1. 모든 인원이 필요한 숫자만큼 n 진수로 변환
-        String number = convertN(n, t * m);
+        // String number = convertN(n, t * m);
+
+        int num = 0;
+        String number = "";
+        while (number.length() < t * m) {
+            number += Integer.toString(num, n);
+            num++;
+        }
         System.out.println(number);
 
         // 2. 튜브가 필요한 숫자만 반환
-        int i = p;
         while (answer.length() < t) {
-            System.out.println(i - 1);
-            answer += number.substring(i - 1, i);
-            i += m;
+            answer += number.substring(p - 1, p);
+            p += m;
         }
-        //System.out.println(answer);
+        System.out.println(answer);
         return answer;
     }
     public String convertN(int n, int len) {
@@ -31,10 +36,10 @@ public class NNumberGame {
         hashMap.put(14, "E");
         hashMap.put(15, "F");
 
-        String numbers = "0";
+        String target = "0";
         int number = 1;
 
-        while (numbers.length() < len) {
+        while (target.length() < len) {
             int q = number, r = 0;
             StringBuilder str = new StringBuilder();
             // number 의 n 진수 구하기
@@ -47,10 +52,10 @@ public class NNumberGame {
                     str.append(r);
                 }
             }
-            numbers += str.reverse();
+            target += str.reverse();
             number++;
         }
-        return numbers;
+        return target;
     }
 
     public static void main(String[] args) {
