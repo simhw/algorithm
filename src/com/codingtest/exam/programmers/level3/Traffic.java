@@ -19,22 +19,19 @@ public class Traffic {
             logs[i][1] = end;
         }
 
-        for (int i = 0; i < logs.length; i++) {
-            double term1 = logs[i][0];
-            double term2 = logs[i][1];
-            int count = 0;
-            System.out.println(Arrays.toString(logs[i]));
-            // 0 ~ 0.999초
-            for (int j = 0; j < logs.length; j++) {
-                if ((logs[j][0] >= term1 && logs[j][0] <= term1 + 1)
-                        || (logs[j][1] >= term1 && logs[j][1] <= term1 + 1)
-                        || (logs[j][0] >= term2 && logs[j][0] <= term2 + 1)
-                        || (logs[j][1] >= term2 && logs[j][1] <= term2 + 1)) {
-                    count += 1;
-                }
+        for (int i = 0; i < logs.length; i++) {  
+            System.out.println(Arrays.toString(logs[i]));          
+            for (int j = 0; j < logs[i].length; j++) {
+                double term = logs[i][j];
+                int count = 0;
+                for (int k = 0; k < logs.length; k++) {
+                    if ((logs[k][0] >= term && logs[k][0] <= term + 1)
+                    || (logs[k][1] >= term && logs[k][1] <= term + 1)) {
+                        count += 1;
+                    }
+                }            
+                answer = Math.max(answer, count);
             }
-            answer = Math.max(answer, count);
-
         }
         System.out.println("answer = " + answer);
         return answer;
@@ -42,6 +39,6 @@ public class Traffic {
 
     public static void main(String[] args) {
         Traffic traffic = new Traffic();
-        traffic.solution(new String[] {"2016-09-15 03:10:33.020 0.011s", "2016-09-15 01:00:07.000 2s"});
+        traffic.solution(new String[] {"2016-09-15 01:00:04.002 2.0s", "2016-09-15 01:00:07.000 2s"});
     }
 }
