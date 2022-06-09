@@ -1,35 +1,33 @@
 package com.codingtest.exam.programmers.level3;
 
-import java.util.Arrays;
-
 public class Traffic {
-    // 초당 최대 처리량은 요청의 응답 완료 여부에 관계없이 임의 시간부터 1초(=1,000밀리초)간 처리하는 요청의 최대 개수를 의미한다.
-
     public int solution(String[] lines) {
         int answer = 0;
         double[][] logs = new double[lines.length][2];
 
         for (int i = 0; i < lines.length; i++) {
             String[] splited = lines[i].split(" ");
-            String[] s = splited[1].split(":");
-            Double time = Double.parseDouble(splited[2].split("s")[0]);
-            Double end = (3600.0 * Integer.parseInt(s[0])) + (60.0 * Integer.parseInt(s[1])) + Double.parseDouble(s[2]);
-            Double start = end - time;
-            logs[i][0] = start + 0.001;
+            String[] s = splited[1].split(":"); // 응답완료시간 
+            Double t = Double.parseDouble(splited[2].split("s")[0]); // 처리시간  (시작시간과 끝시간을 포함)
+            Double end = (3600.0 * Integer.parseInt(s[0])) + (60.0 * Integer.parseInt(s[1])) + Double.parseDouble(s[2]);    // 응답완료시간 
+            logs[i][0] = (end - t) + 0.001;    // 시작시간 
             logs[i][1] = end;
         }
 
-        for (int i = 0; i < logs.length; i++) {  
-            System.out.println(Arrays.toString(logs[i]));          
+        for (int i = 0; i < logs.length; i++) {
             for (int j = 0; j < logs[i].length; j++) {
-                double term = logs[i][j];
+                // 0 ~ 0.999(1초) 구간 설정 
+                double left = logs[i][j];
+                double right = (Math.round((left + 0.999) * 1000) / 1000.0);   
                 int count = 0;
                 for (int k = 0; k < logs.length; k++) {
-                    if ((logs[k][0] >= term && logs[k][0] <= term + 1)
-                    || (logs[k][1] >= term && logs[k][1] <= term + 1)) {
+                    if ((logs[k][0] >= left && logs[k][0] <= right) // 해당 범위에 로그의 시작점이 위치해 있는 경우
+                            || (logs[k][1] >= left && logs[k][1] <= right)// 해당 범위에 로그의 끝점이 위치해 있는 경우
+                            || (logs[k][0] <= left && logs[k][1] >= right)) { // 로그의 시작 시간과 끝나는 시간이 해당 범위보다 넓은 경우
+
                         count += 1;
                     }
-                }            
+                }
                 answer = Math.max(answer, count);
             }
         }
