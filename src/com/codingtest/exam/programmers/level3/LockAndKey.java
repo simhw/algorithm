@@ -1,67 +1,73 @@
 package com.codingtest.exam.programmers.level3;
 
-import java.util.Arrays;
-
 public class LockAndKey {
     public boolean solution(int[][] key, int[][] lock) {
-        boolean answer = true;
-        boolean match = true;
+        boolean answer = false;
+        int n = lock.length; // 자물쇠 크기
+        int m = key.length; // 키 크기
+
+        // 자물쇠 크기를 가로, 세로 길이 3 배로 변환
+        int[][] board = new int[n * 3][n * 3];
+
+        // 새로운 자물쇠의 중앙 부분에 기존의 자물쇠 넣기
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                board[i + n][j + n] = lock[i][j];
+            }
+        }
 
         // 최대 4 번까지 배열을 회전시키면서 가능한 경우를 모두 탐색
-        for (int i = 0; i < 4; i++) {
-            match = true;
-            for (int j = 0; j < lock.length; j++) {
-                if (Math.abs(key[0][j] - lock[lock.length - 1][j]) != 1) {
-                    match = false;
-                    break;
+        for (int count = 0; count < 4; count++) {
+            key = turn(key);
+            
+            for (int x = 0; x < n * 2; x++) {
+                for (int y = 0; y < n * 2; y++) {
+            
+                    // 자물쇠에 열쇠 끼워 넣기
+                    for (int i = 0; i < m; i++) {
+                        for (int j = 0; j < m; j++) {
+                            board[x + i][y + j] += key[i][j];
+                        }
+                    }
+                  
+                    // 새로운 자물쇠에 열쇠가 정확히 들어맞는지 검사
+                    if (check(board)) {
+                        answer = true;
+                    }
+
+                    // 자물쇠에 열쇠 다시 빼기
+                    for (int i = 0; i < m; i++) {
+                        for (int j = 0; j < m; j++) {
+                            board[x + i][y + j] -= key[i][j];
+                        }
+                    }
                 }
             }
-            if (match) {
-                break;
-            } else {
-                key = turnKey(key);
-            }
         }
-
-        // for (int i = 0; i < key.length; i++) {
-        //     System.out.println(Arrays.toString(key[i]));
-        // }
-        // System.out.println("match " + match);
         
-        // 자물쇠 영역 내에서는 열쇠의 돌기(1) 부분과 자물쇠의 홈(0) 부분이 정확히 일치
-
-        // lock 배열을 가로, 세로 길이가 3배인 새로운 배열의 중앙 부분으로 이동 
-        int[][] triple = new int[lock.length * 3][lock.length * 3];
-        for (int i = 0; i < lock.length; i++) {
-            for (int j = 0; j < lock.length; j++) {
-                triple[lock.length + i][lock.length + j] = lock[i][j];
-            }
-        }
-
-        int count = key.length - 1;
-        for (int i = 0; i < lock.length + (key.length - 1); i++) {
-            for (int j = 0; j < lock.length + (key.length - 1); j++) {
-                // x, y 좌표 
-                if(moveKey(key, triple, (lock.length - count) + i, (lock.length - count) + j)) {
-
-                }
-            }    
-        }
         return answer;
     }
-    public boolean moveKey(int[][] key, int[][] triple, int x, int y) {
-        
+
+    // 자물쇠의 중간 부분이 모두 1 인지 확인
+    public boolean check(int[][] board) {
+        int len = board.length / 3;
+        for (int i = len; i < len * 2; i++) {
+            for (int j = len; j < len * 2; j++) {
+                if (board[i][j] != 1) {
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
-
-    // 시계 방향으로 90 도씩 회전
-    public int[][] turnKey(int[][] key) {
-        int m = key.length;
-        int[][] turned = new int[m][m];
-        for (int i = 0; i < key.length; i++) {
-            for (int j = 0; j < key.length; j++) {
-                turned[i][m - (j + 1)] = key[j][i];
+    // 시계 방향으로 90 도 회전
+    public int[][] turn(int[][] key) {
+        int n = key.length; 
+        int[][] turned = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                turned[j][n - (i + 1)] = key[i][j];
             }
         }
         return turned;
