@@ -1,16 +1,15 @@
 package com.codingtest.exam.thisiscodingtest.ch10;
 
-import java.util.Arrays;
+// 서로소 집합을 활용한 사이클 판별
+
+// 1. 각 간선을 확인하며 두 노드의 루트 노드를 확인한다.
+// 1-1. 루트 노드가 다르다면 두 노드에 대하여 union 연산을 수행한다.
+// 1-2. 루트 노드가 서로 같다면 사이클이 발생한 것이다.
+// 2. 그래프에 포함되어 있는 모든 간선에 대하여 1 번 과정을 반복한다.
+
 import java.util.Scanner;
 
-// 서로소 집합
-// 공통 원소가 없는 두 집합
-
-// 1. 합집합 연산을 확인하여, 서로 연결된 두 노드 A, B 확인
-// 1-1. A 와 B 의 루트 노드를 각각 찾기
-// 1-2. A 를 B 의 부모 노드로 설정
-// 2. 모든 합집합 연산을 처리할 때까지 1 번 과정 반복
-public class Ex01 {
+public class Ex02 {
     static int V, E;
     static int[] parent;
 
@@ -24,37 +23,37 @@ public class Ex01 {
             parent[i] = i;
         }
 
+        boolean cycle = false;
         for (int i = 0; i < E; i++) {
             int a = sc.nextInt();
             int b = sc.nextInt();
+            // 사이클이 발생한 경우 종료
+            if (findParent(a) == findParent(b)) {
+                cycle = true;
+                break;
+            }
+            // 사이클이 발생하지 않았다면 합집합 수행
             unionParent(a, b);
-        }
 
-        System.out.println(Arrays.toString(parent));
+            if (cycle) {
+                System.out.println("cycle");
+            } else {
+                System.out.println("cycle x");
+            }
+        }
     }
 
-    // 두 원소가 속한 집합 찾기
-    static int findParent1(int x) {
-        // 루트 노드가 아니라면 루트 노드를 찾을 때까지 재귀적으로 호출
-        if (x != parent[x]) {
-            return findParent1(parent[x]);
-        }
-        return x;
-    }
-
-    // 경로 압축 기법
-    static int findParent2(int x) {
+    static int findParent(int x) {
         if (x != parent[x]) {
             // 함수를 재귀적으로 호출한 뒤 부모 테이블 값을 갱신
-            parent[x] = findParent2(parent[x]);
+            parent[x] = findParent(parent[x]);
         }
         return parent[x];
     }
 
-    // 두 원소가 속한 집합 합치기
     static void unionParent(int a, int b) {
-        a = findParent2(a);
-        b = findParent2(b);
+        a = findParent(a);
+        b = findParent(b);
         if (a < b) {
             parent[b] = a;
         } else {
