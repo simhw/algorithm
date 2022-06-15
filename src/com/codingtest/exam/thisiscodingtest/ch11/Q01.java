@@ -11,7 +11,7 @@ public class Q01 {
     static int N;
     static int[] A;
 
-    static void input () {
+    static void input() {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         A = new int[N];
@@ -19,6 +19,7 @@ public class Q01 {
             A[i] = sc.nextInt();
         }
     }
+
     static void solution() {
         int result = 0;
 
@@ -39,6 +40,7 @@ public class Q01 {
         }
         System.out.println(result);
     }
+
     public static void main(String[] args) {
         /*
 5
