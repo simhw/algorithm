@@ -2,95 +2,92 @@ package com.codingtest.exam.thisiscodingtest.ch12;
 
 import java.util.*;
 
-// 외벽 점검
-// 원형으로 주어진 완전탐색 문제를 해결할 수 있는지 파악
-// bit mask 나, permutation 등을 활용할 수 있는지 파악
+// 치킨 배달
+// 삼성전자 SW 역량테스트
 
 public class Q13 {
-    List<List<Integer>> cases = new ArrayList<>();
+    static int N, M;
+    static List<List<Integer>> houses;
+    static List<List<Integer>> chickens;
 
-    public int solution(int n, int[] weak, int[] dist) {
-        final int WEAK = weak.length;
-        final int DIST = dist.length;
-        int answer = DIST + 1;
-        int[] circle = new int[WEAK + WEAK];
+    static List<Integer> cases  = new ArrayList<>();
 
-        for (int i = 0; i < WEAK; i++) {
-            circle[i] = weak[i];
-        }
-        for (int i = WEAK; i < circle.length; i++) {
-            circle[i] = weak[i - WEAK] + n;
-        }
-
-        // 친구를 선택해 나열하는 방법을 모두 고려
-        permutation(DIST, 0, dist, new int[DIST], new boolean[DIST]);
-
-        for (int i = 0; i < cases.size(); i++) {
-            List<Integer> friends = cases.get(i);
-            for (int j = 0; j < WEAK; j++) {
-                int count = 1;
-                int start = circle[j];
-                for (int k = j; k < j + WEAK; k++) {
-                    if (circle[k] - start > friends.get(count - 1)) {
-                        System.out.println(circle[k] + ", " + start);
-                        count += 1;
-                        start = circle[k];
-                        if (count > DIST) break;
-                    }
+    static void input() {
+        Scanner sc = new Scanner(System.in);
+        N = sc.nextInt();
+        M = sc.nextInt();
+        houses = new ArrayList<>();
+        chickens = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                int a = sc.nextInt();
+                // 0: 빈칸, 1: 집, 2: 치킨집
+                if (a == 1) {
+                    houses.add(new ArrayList<>(Arrays.asList(i, j)));
+                } else if (a == 2) {
+                    chickens.add(new ArrayList<>(Arrays.asList(i, j)));
                 }
-                answer = Math.min(answer, count);
             }
-        }
-
-        // 취약 지점을 전부 점검할 수 없는 경우
-        if (answer > DIST) {
-            return -1;
-        }
-        return answer;
-    }
-
-    // 순열
-    public void permutation(int r, int k, int[] arr, int[] selected, boolean[] used) {
-        if (k == r) {
-            List<Integer> temp = new ArrayList<>();
-            for (int i = 0; i < selected.length; i++) {
-                temp.add(selected[i]);
-            }
-            cases.add(temp);
-        }
-        for (int i = arr.length - 1; i > -1; i--) {
-            if (used[i]) {
-                continue;
-            }
-            selected[k] = arr[i];
-            used[i] = true;
-            permutation(r, k + 1, arr, selected, used);
-            selected[k] = 0;
-            used[i] = false;
         }
     }
 
-    // 순열
-    public void permutation(int[] arr, int r, int k) {
-        if (k == r) {
-            return;
-        }
-
-        for (int i = k; i < arr.length; i++) {
-            swap(arr, i, k);
-            permutation(arr, r, k + 1);
-            swap(arr, i, k);
-        }
+    static void solution() {
+        int answer = 0;
+        // 모든 치킨집 중에서 M 개의 치킨집을 뽑는 조합 계산
+        combination(chickens.size(), 0, new int[M]);
+        // 치킨 거리의 합의 최소를 찾아 출력
+        answer = Collections.min(cases);
+        System.out.println(answer);
     }
 
-    public void swap(int[] arr, int a, int b) {
-        int tmp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = tmp;
+
+    // 치킨 거리의 합을 계산하는 함수
+    static int getDistance (int[] selected) {
+        int sum = 0;
+        // 모든 집에 대하여
+        for (List<Integer> house : houses) {
+            int distance = Integer.MAX_VALUE;
+            int a = house.get(0);
+            int b = house.get(1);
+
+            // 가장 가까운 치킨 집 찾기
+            for (int index : selected) {
+                List<Integer> chicken = chickens.get(index);
+                int x = chicken.get(0);
+                int y = chicken.get(1);
+
+                // 유클리디안 거리
+                distance = Math.min(distance, Math.abs(a - x) + Math.abs(b - y));
+            }
+            // 가장 가까운 치킨집까지의 거리를 더하기
+            sum += distance;
+        }
+        return sum;
+    }
+    static void combination(int n, int k, int[] selected) {
+        if (k == M) {
+            // 치킨 거리 계산
+            cases.add(getDistance(selected));
+        } else {
+            int start = k == 0 ? 0 : selected[k - 1] + 1;
+            for (int i = start; i < n; i++) {
+                selected[k] = i;
+                combination(n, k + 1, selected);
+                selected[k] = 0;
+            }
+        }
     }
 
     public static void main(String[] args) {
-        Q13 q13 = new Q13();
-        q13.solution(12, new int[]{1, 3, 4, 9, 10}, new int[]{1});
+/*
+5 3
+0 0 1 0 0
+0 0 2 0 1
+0 1 2 0 0
+0 0 1 0 0
+0 0 0 0 2
+ */
+        input();
+        solution();
     }
 }
