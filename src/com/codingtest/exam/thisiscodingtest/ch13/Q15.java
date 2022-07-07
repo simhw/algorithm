@@ -3,7 +3,7 @@ package com.codingtest.exam.thisiscodingtest.ch13;
 import java.util.*;
 
 // 특정 거리의 도시 찾기
-public class ch15 {
+public class Q15 {
     static int N, M, K, X;
     static List<List<Integer>> graph;
 
