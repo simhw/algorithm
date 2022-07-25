@@ -20,5 +20,6 @@ public class Ex04 {
         N = sc.nextInt();
         dp = new int[N + 1];
         solution();
+        sc.close();
     }
 }

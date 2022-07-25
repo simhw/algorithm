@@ -29,6 +29,7 @@ public class Ex05 {
         for (int i = 1; i < M + 1; i++) {
             dp[i] = 10001;
         }
+        sc.close();
     }
 
     static void solution() {

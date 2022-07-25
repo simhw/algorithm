@@ -29,6 +29,7 @@ public class Q13 {
                 }
             }
         }
+        sc.close();
     }
 
     static void solution() {

@@ -101,7 +101,8 @@ public class Q21 {
             for (int j = 0; j < n; j++) {
                 arr[i][j] = sc.nextInt();
             }
-        }
+        }        
+        sc.close();
         solution();
     }
 }

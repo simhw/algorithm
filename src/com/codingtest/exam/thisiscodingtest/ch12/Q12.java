@@ -97,12 +97,12 @@ public class Q12 {
                     }
                 }
                 if (!possible(answer)) {
-                    answer.add(new ArrayList(Arrays.asList(x, y, stuff)));
+                    answer.add(new ArrayList<Integer>(Arrays.asList(x, y, stuff)));
                 }
             }
             // 설치하는 경우
             if (operate == 1) {
-                answer.add(new ArrayList(Arrays.asList(x, y, stuff)));
+                answer.add(new ArrayList<Integer>(Arrays.asList(x, y, stuff)));
                 if (!possible(answer)) {
                     answer.remove(answer.size() - 1);
                 }

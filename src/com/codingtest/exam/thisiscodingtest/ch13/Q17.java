@@ -31,7 +31,7 @@ public class Q17 {
     static int[] dy = {0, 0, -1, 1};
 
     static ArrayList<Virus> viruses = new ArrayList<Virus>();
-    static Queue<Node> queue = new LinkedList();
+    static Queue<Node> queue = new LinkedList<Node>();
 
     static void solution() {
         // 정렬 이후에 큐로 옮기기
@@ -120,6 +120,7 @@ public class Q17 {
         s = sc.nextInt();
         x = sc.nextInt();
         y = sc.nextInt();
+        sc.close();
 
         solution();
     }

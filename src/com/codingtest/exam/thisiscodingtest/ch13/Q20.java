@@ -136,6 +136,7 @@ public class Q20 {
                 }
             }
         }
+        sc.close();
         solution();
     }
 }

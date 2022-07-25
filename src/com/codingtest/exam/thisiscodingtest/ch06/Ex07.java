@@ -22,6 +22,7 @@ public class Ex07 {
         for (int i = 0; i < N; i++) {
             B[i] = sc.nextInt();
         }
+        sc.close();
     }
     static void solution() {
         int answer = 0;

@@ -30,7 +30,7 @@ public class Ex03 {
             int cost = sc.nextInt();
             edges[a][b] = cost;
         }
-
+        
         // 간선을 비용순으로 정렬
         Arrays.sort(edges, new Comparator<int[]>() {
             @Override
@@ -54,6 +54,7 @@ public class Ex03 {
         }
 
         System.out.println(result);
+        sc.close();
     }
 
     static int findParent(int x) {

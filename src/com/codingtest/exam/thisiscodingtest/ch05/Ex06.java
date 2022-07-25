@@ -24,6 +24,7 @@ public class Ex06 {
                 graph[i][j] = sc.nextInt();
             }
         }
+        sc.close();
     }
 
     // DFS 로 특정한 노드를 방문한 뒤에 연결된 모든 노드들도 방문

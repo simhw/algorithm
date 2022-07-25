@@ -9,8 +9,8 @@ public class Ex02 {
 
     static void input() {
         Scanner sc = new Scanner(System.in);
-
         N = sc.nextInt();
+        sc.close();
     }
 
     static void solution() {

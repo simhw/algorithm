@@ -21,6 +21,7 @@ public class Ex03 {
         for (int i = 0; i < M; i++) {
             B[i] = sc.nextInt();
         }
+        sc.close();
     }
 
     static int search(int target, int start, int end) {

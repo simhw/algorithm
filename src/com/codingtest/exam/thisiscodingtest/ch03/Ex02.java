@@ -22,6 +22,7 @@ public class Ex02 {
         for (int i = 0; i < N; i++) {
             A[i] = sc.nextInt();
         }
+        sc.close();
 
         // 입력받은 수들 정렬하기
         Arrays.sort(A);

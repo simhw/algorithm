@@ -13,6 +13,7 @@ public class Q02 {
     static void input() {
         Scanner sc = new Scanner(System.in);
         S = sc.nextLine();
+        sc.close();
     }
 
     static void solution() {

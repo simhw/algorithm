@@ -33,6 +33,7 @@ public class Ex05 {
             int distance = sc.nextInt();
             graph[a].add(new Node(b, distance));
         }
+        sc.close();
     }
 
     static void solution() {

@@ -2,7 +2,6 @@ package com.codingtest.exam.thisiscodingtest.ch04;
 
 // 예제 4-4 게임 개발
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ex04 {
@@ -20,12 +19,13 @@ public class Ex04 {
         d = sc.nextInt();
 
         // 전체 맵 정보 입력
-        array = new int [N][M];
+        array = new int[N][M];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 array[i][j] = sc.nextInt();
             }
         }
+        sc.close();
     }
 
     // 반시계 방향으로 90 도 회전
@@ -43,8 +43,8 @@ public class Ex04 {
         visited[x][y] = 1;
 
         // 북, 동, 남, 서 방향 정의
-        int[] dx = new int[]{-1, 0, 1, 0};
-        int[] dy = new int[]{0, 1, 0, -1};
+        int[] dx = new int[] { -1, 0, 1, 0 };
+        int[] dy = new int[] { 0, 1, 0, -1 };
 
         int count = 1;
         int turn = 0;
@@ -81,14 +81,15 @@ public class Ex04 {
         }
         System.out.println(count);
     }
+
     public static void main(String[] args) {
         input();
-//        4 4
-//        1 1 0
-//        1 1 1 1
-//        1 0 0 1
-//        1 1 0 1
-//        1 1 1 1
+        // 4 4
+        // 1 1 0
+        // 1 1 1 1
+        // 1 0 0 1
+        // 1 1 0 1
+        // 1 1 1 1
         solution();
     }
 

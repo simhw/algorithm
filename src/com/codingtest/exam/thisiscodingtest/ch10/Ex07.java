@@ -10,7 +10,7 @@ import java.util.*;
 public class Ex07 {  
     static int V;
     static int time[];
-    static ArrayList<Integer>[] graph;
+    static List<Integer>[] graph;
     static int indegree[];
 
     static void solution() {
@@ -35,6 +35,7 @@ public class Ex07 {
                 }
             }
         }
+        sc.close();
         topology();
     }
     static void topology() {

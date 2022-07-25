@@ -35,5 +35,6 @@ public class Ex03 {
         }
         dp = new int[N];
         solution();
+        sc.close();
     }
 }

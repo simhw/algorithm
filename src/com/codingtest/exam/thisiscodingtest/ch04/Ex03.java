@@ -10,6 +10,7 @@ public class Ex03 {
     static void input() {
         Scanner sc = new Scanner(System.in);
         knight = sc.nextLine();
+        sc.close();
     }
 
     static void solution() {

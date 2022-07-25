@@ -31,6 +31,7 @@ public class Ex05 {
                 }
             }
         }
+        sc.close();
     }
 
     static int findParent(int x) {

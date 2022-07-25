@@ -4,7 +4,6 @@ package com.codingtest.exam.thisiscodingtest.ch03;
 // <해결>
 // '각 행마다 작은 수'를 찾은 뒤에 그 수 중에서 가장 큰 수를 찾는다.
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ex03 {
@@ -26,6 +25,8 @@ public class Ex03 {
             for (int j = 0; j < M; j++) {
                 A[j] = sc.nextInt();
             }
+            sc.close();
+            
             int min = 10001;
             for (int j = 0; j < M; j++) {
                 min = Math.min(min, A[j]);

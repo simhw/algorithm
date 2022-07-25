@@ -41,6 +41,7 @@ public class Ex02 {
                 System.out.println("cycle x");
             }
         }
+        sc.close();
     }
 
     static int findParent(int x) {

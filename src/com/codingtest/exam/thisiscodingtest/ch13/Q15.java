@@ -25,6 +25,7 @@ public class Q15 {
             int b = sc.nextInt();
             graph.get(a).add(b);
         }
+        sc.close();
     }
 
     static void solution() {

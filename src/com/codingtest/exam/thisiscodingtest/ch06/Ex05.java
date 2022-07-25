@@ -19,6 +19,8 @@ public class Ex05 {
         for (int i = 0; i < N; i++) {
             array[i] = sc.nextInt();
         }
+        sc.close();
+
         // 기본 정렬 라이브러리 이용
         Arrays.sort(array, Collections.reverseOrder());
 

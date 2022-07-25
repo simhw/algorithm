@@ -14,6 +14,8 @@ public class Q24 {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
+        sc.close();
+        
         Arrays.sort(arr);
         // 중간값에 해당하는 위치의 집에 안테나를 설치했을 때,
         // 안테나로부터 모든 집까지의 거리의 총합이 최소가 된다.

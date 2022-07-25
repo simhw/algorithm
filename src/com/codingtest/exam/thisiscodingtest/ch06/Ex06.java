@@ -18,7 +18,8 @@ public class Ex06 {
             int score = sc.nextInt();
             students.add(new Student(name, score));
         }
-
+        sc.close();
+        
         Collections.sort(students);
         System.out.println(students);
     }

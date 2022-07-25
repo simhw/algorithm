@@ -1,10 +1,5 @@
 package com.codingtest.exam.programmers.level2;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-
 public class ArcheryCompetition {
 
     static int max = -1;

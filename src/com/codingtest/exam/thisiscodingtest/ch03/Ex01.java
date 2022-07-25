@@ -25,6 +25,7 @@ public class Ex01 {
         }
 
         System.out.println(answer);
+        sc.close();
     }
     public static void main(String[] args) {
         solution();

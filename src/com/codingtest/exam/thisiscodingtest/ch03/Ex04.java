@@ -20,6 +20,8 @@ public class Ex04 {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         K = sc.nextInt();
+        sc.close();
+
         int result = 0;
         while (N > 1) {
             // N 이 K 로 나누어 떨어지는 수가 될 때까지만 1 씩 빼기

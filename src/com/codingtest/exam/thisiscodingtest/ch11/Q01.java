@@ -18,6 +18,7 @@ public class Q01 {
         for (int i = 0; i < N; i++) {
             A[i] = sc.nextInt();
         }
+        sc.close();
     }
 
     static void solution() {

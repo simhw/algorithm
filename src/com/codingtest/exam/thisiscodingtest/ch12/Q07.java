@@ -13,6 +13,7 @@ public class Q07 {
         str = sc.nextLine();
         System.out.println(str);
         arr = str.toCharArray();
+        sc.close();
     }
 
     static void solution() {

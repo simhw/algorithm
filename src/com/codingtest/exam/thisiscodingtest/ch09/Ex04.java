@@ -40,6 +40,7 @@ public class Ex04 {
 
         X = sc.nextInt(); // 최종 목적지
         K = sc.nextInt(); // 경유지
+        sc.close();
     }
 
     static void solution() {

@@ -45,6 +45,7 @@ public class Q23 {
             int math = sc.nextInt();
             students.add(new Student(name, kor, eng, math));
         }
+        sc.close();
 
         Collections.sort(students);
         for (int i = 0; i < n; i++) {

@@ -10,10 +10,10 @@ public class Ex01 {
 
     public static void input() {
         Scanner sc = new Scanner(System.in);
-
         N = sc.nextInt();
         sc.nextLine();
         direction = sc.nextLine();
+        sc.close();
     }
 
     public static void solution() {

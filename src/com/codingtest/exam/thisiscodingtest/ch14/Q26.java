@@ -26,7 +26,8 @@ public class Q26 {
 
         for (int i = 0; i < n; i++) {
             heap.add(sc.nextInt());
-        }
+        }        
+        sc.close();
         solution();
     }
 }

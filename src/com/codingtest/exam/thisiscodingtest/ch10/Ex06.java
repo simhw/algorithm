@@ -26,6 +26,7 @@ public class Ex06 {
             edges[i][1] = b;
             edges[i][2] = cost;
         }
+        sc.close();
         parent = new int[N + 1];
 
         // 부모를 자기 자신으로 초기화

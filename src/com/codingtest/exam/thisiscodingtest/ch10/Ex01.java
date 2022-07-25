@@ -29,6 +29,7 @@ public class Ex01 {
             int b = sc.nextInt();
             unionParent(a, b);
         }
+        sc.close();
 
         System.out.println(Arrays.toString(parent));
     }

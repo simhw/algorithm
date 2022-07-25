@@ -56,6 +56,7 @@ public class Q19 {
         for (int i = 0; i < 4; i++) {
             operators[i] = sc.nextInt();
         }
+        sc.close();
         solution();
     }
 

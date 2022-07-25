@@ -20,6 +20,7 @@ public class Ex07 {
                 graph[i][j] = sc.nextInt();
             }
         }
+        sc.close();
     }
 
     static void solution(int x, int y) {

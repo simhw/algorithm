@@ -34,5 +34,6 @@ public class Ex02 {
         Scanner sc = new Scanner(System.in);
         X = sc.nextInt();
         solution();
+        sc.close();
     }
 }

@@ -33,6 +33,7 @@ public class Ex04 {
             // 진입차수를 1 증가
             indegree[b] += 1;
         }
+        sc.close();
         topology();
     }
 

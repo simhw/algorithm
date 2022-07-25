@@ -110,6 +110,7 @@ public class Q16 {
                 graph[i][j] = sc.nextInt();
             }
         }
+        sc.close();
 
         combination(0);
         System.out.println(result);
