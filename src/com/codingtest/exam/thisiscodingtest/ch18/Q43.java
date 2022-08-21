@@ -77,14 +77,12 @@ class Node implements Comparable<Node> {
 
     @Override
     public int compareTo(Node o) {
-        // TODO Auto-generated method stub
         // 간선 데이터를 비용에 따라 오름차순 정렬
         return this.d - o.d;
     }
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return "{x:" + x + ", y;" + y + ", d:" + d + "}";
     }
 }
